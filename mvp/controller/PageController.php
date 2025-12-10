@@ -18,4 +18,8 @@ class PageController {
         include "vue/deconnexion.php";
     }   
 
+    public function CreerCompte() {
+        include "vue/CreerCompte.php";
+    }   
+
 }

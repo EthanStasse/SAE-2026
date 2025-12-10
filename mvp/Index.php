@@ -24,6 +24,10 @@ switch ($page) {
         $controller->deconnexion();
         break;
 
+    case "CreerCompte":
+        $controller->CreerCompte();
+        break;
+
     default:
         echo "Page inconnue";
 }

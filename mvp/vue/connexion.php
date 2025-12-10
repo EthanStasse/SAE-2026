@@ -79,6 +79,7 @@ if (isset($_POST['btn_connexion'])) {
         <a href="Index.php?page=deconnexion">Deconnexion</a>
     <?php } else { ?>
         <a href="Index.php?page=connexion">Connexion</a>
+
     <?php } ?>
 
     </nav>
@@ -96,6 +97,7 @@ if (isset($_POST['btn_connexion'])) {
     <input type="password" name="mdp" placeholder="Votre mot de passe">
 
     <button type="submit" name="btn_connexion" class="btn">Connexion</button>
+    <a href="Index.php?page=CreerCompte">Creer un compte</a>
 </form>
 
 </section>

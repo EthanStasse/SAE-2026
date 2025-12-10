@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact - Coup de Sifflet</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header>
+    <h1>Coup de Sifflet</h1>
+    <nav>
+        <a href="Index.php?page=accueil">Accueil</a>
+        <a href="Index.php?page=contact">Contact</a>
+    </nav>
+</header>
+
+<main>
+<section class="form-section">
+    <h2>Contactez-nous</h2>
+
+    <form>
+        <label>Nom</label>
+        <input type="text" placeholder="Votre nom">
+
+        <label>prenom</label>
+        <input type="text" placeholder="Votre prenom">
+
+        <label>Email</label>
+        <input type="email" placeholder="Votre email">
+
+        <label>Mot de passe</label>
+        <input type="password" placeholder="Votre mot de passe">
+
+        <button class="btn">Creer un compte</button>
+    </form>
+</section>
+</main>
+<footer>
+    <p>&copy; 2025 - Coup de Sifflet</p>
+</footer>
+</body>
+</html>
