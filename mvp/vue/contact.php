@@ -12,6 +12,7 @@
     <nav>
         <a href="Index.php?page=accueil">Accueil</a>
         <a href="Index.php?page=contact">Contact</a>
+        <a href="Index.php?page=connexion">Connexion</a>
     </nav>
 </header>
 

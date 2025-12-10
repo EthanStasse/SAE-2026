@@ -16,6 +16,10 @@ switch ($page) {
         $controller->contact();
         break;
 
+    case "connexion":
+        $controller->connexion();
+        break;
+
     default:
         echo "Page inconnue";
 }

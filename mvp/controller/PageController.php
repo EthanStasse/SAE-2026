@@ -9,4 +9,8 @@ class PageController {
     public function contact() {
         include "vue/contact.php";
     }
+
+    public function connexion() {
+        include "vue/connexion.php";
+    }
 }
