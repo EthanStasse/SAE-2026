@@ -15,6 +15,7 @@
     </nav>
 </header>
 
+<main>
 <section class="form-section">
     <h2>Contactez-nous</h2>
 
@@ -31,6 +32,7 @@
         <button class="btn">Envoyer</button>
     </form>
 </section>
+</main>
 
 <footer>
     <p>&copy; 2025 - Coup de Sifflet</p>

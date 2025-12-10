@@ -15,11 +15,13 @@
     </nav>
 </header>
 
-<section class="hero">
-    <h2>Votez simplement et rapidement</h2>
-    <p>Plateforme de vote européenne — interface simple et intuitive.</p>
-    <a class="btn" href="Index.php?page=contact">Nous contacter</a>
-</section>
+<main>
+    <section class="hero">
+        <h2>Votez simplement et rapidement</h2>
+        <p>Plateforme de vote européenne — interface simple et intuitive.</p>
+        <a class="btn" href="Index.php?page=contact">Nous contacter</a>
+    </section>
+</main>
 
 <footer>
     <p>&copy; 2025 - Coup de Sifflet</p>
