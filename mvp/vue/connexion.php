@@ -1,8 +1,81 @@
+<?php
+session_start();
+
+$is_admin = $_SESSION['is_admin'] ?? false;
+$is_electeur = $_SESSION['is_electeur'] ?? false;
+$is_connecter = $_SESSION['is_connecter'] ?? false;
+?>
+
+<?php
+// Si on clique sur "Connexion"
+if (isset($_POST['btn_connexion'])) {
+
+    $nom = $_POST['nom'];
+    $mdp = $_POST['mdp'];
+
+    // Connexion MySQL
+    $host = "localhost";
+    $dbname = "coup_de_sifflet";
+    $user = "root"; // ou ton utilisateur MySQL
+    $pass = "";     // ton mdp MySQL
+
+    try {
+        $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        // Vérifie si administrateur
+        $sql = "SELECT * FROM administrateur WHERE nom = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$nom]);
+        $admin = $stmt->fetch();
+
+        if ($admin && password_verify($mdp, $admin['mot_de_passe'])) {
+            // Enregistrer l'état dans la session
+            $_SESSION['is_admin'] = true;
+            $_SESSION['is_connecter'] = true;
+            header('Location: Index.php?page=accueil');
+            exit;
+        }
+
+        // Vérifie si electeur
+        $sql = "SELECT * FROM electeur WHERE nom = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$nom]);
+        $user = $stmt->fetch();
+
+        if ($user && password_verify($mdp, $user['mot_de_passe'])) {
+            // Enregistrer l'état dans la session
+            $_SESSION['is_electeur'] = true;
+            $_SESSION['is_connecter'] = true;
+            header('Location: Index.php?page=accueil');
+            exit;
+        }
+
+        echo "Nom ou mot de passe incorrect";
+
+    } catch (PDOException $e) {
+        die("Erreur DB : " . $e->getMessage());
+    }
+}
+
+// Si on clique sur "deconnexion"
+if (isset($_POST['btn_deconnexion'])) {
+    // Supprimer les variables de session liées à la connexion
+    unset($_SESSION['is_admin'], 
+    $_SESSION['is_electeur'], 
+    $_SESSION['is_connecter'],
+    );
+    header('Location: Index.php?page=accueil');
+    exit;
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Contact - Coup de Sifflet</title>
+    <title>Connexion - Coup de Sifflet</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -12,7 +85,14 @@
     <nav>
         <a href="Index.php?page=accueil">Accueil</a>
         <a href="Index.php?page=contact">Contact</a>
+    <?php if ($is_connecter == true) { ?>
+        <form method="POST" action="Index.php?page=connexion" style="display:inline">
+            <button type="submit" name="btn_deconnexion">deconnexion</button>
+        </form>
+    <?php } else { ?>
         <a href="Index.php?page=connexion">Connexion</a>
+    <?php } ?>
+
     </nav>
 </header>
 
@@ -20,15 +100,16 @@
 <section class="form-section">
     <h2>Connectez-vous</h2>
 
-    <form>
-        <label>Nom</label>
-        <input type="text" placeholder="Votre nom">
+<form method="POST" action="Index.php?page=connexion">
+    <label>Nom</label>
+    <input type="text" name="nom" placeholder="Votre nom">
 
-        <label>Mot de passe</label>
-        <input type="password" placeholder="Votre mot de passe">
+    <label>Mot de passe</label>
+    <input type="password" name="mdp" placeholder="Votre mot de passe">
 
-        <button class="btn">Connexion</button>
-    </form>
+    <button type="submit" name="btn_connexion" class="btn">Connexion</button>
+</form>
+
 </section>
 </main>
 

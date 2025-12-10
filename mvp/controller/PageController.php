@@ -13,4 +13,5 @@ class PageController {
     public function connexion() {
         include "vue/connexion.php";
     }
+    
 }
