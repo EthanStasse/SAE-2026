@@ -20,6 +20,10 @@ switch ($page) {
         $controller->connexion();
         break;
 
+    case "deconnexion":
+        $controller->deconnexion();
+        break;
+
     default:
         echo "Page inconnue";
 }

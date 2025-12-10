@@ -23,9 +23,7 @@ $nom = $_SESSION['nom'] ?? '';
         <a href="Index.php?page=accueil">Accueil</a>
         <a href="Index.php?page=contact">Contact</a>
         <?php if ($is_connecter == true) { ?>
-            <form method="POST" action="Index.php?page=connexion" style="display:inline">
-                <button type="submit" name="btn_deconnexion">deconnexion</button>
-            </form>
+        <a href="Index.php?page=deconnexion">Deconnexion</a>
         <?php } else { ?>
             <a href="Index.php?page=connexion">Connexion</a>
         <?php } ?>
