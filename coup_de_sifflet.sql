@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Dec 10, 2025 at 12:57 PM
--- Server version: 9.1.0
--- PHP Version: 8.3.14
+-- Hôte : 127.0.0.1:3306
+-- Généré le : ven. 12 déc. 2025 à 12:54
+-- Version du serveur : 8.3.0
+-- Version de PHP : 8.2.18
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `coup_de_sifflet`
+-- Base de données : `coup_de_sifflet`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `administrateur`
+-- Structure de la table `administrateur`
 --
 
 DROP TABLE IF EXISTS `administrateur`;
@@ -35,12 +35,19 @@ CREATE TABLE IF NOT EXISTS `administrateur` (
   `mot_de_passe` varchar(255) NOT NULL,
   PRIMARY KEY (`id_admin`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `administrateur`
+--
+
+INSERT INTO `administrateur` (`id_admin`, `nom`, `email`, `mot_de_passe`) VALUES
+(3, 'Admin', 'Admin@Admin', '$2y$10$ePcGb50EhXQ98KKB4SMBN.MHQE2E1NinUPdux2oIxdP9nBymDGfUq');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `classement`
+-- Structure de la table `classement`
 --
 
 DROP TABLE IF EXISTS `classement`;
@@ -56,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `classement` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `electeur`
+-- Structure de la table `electeur`
 --
 
 DROP TABLE IF EXISTS `electeur`;
@@ -69,12 +76,12 @@ CREATE TABLE IF NOT EXISTS `electeur` (
   `role` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id_electeur`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=106 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `equipe`
+-- Structure de la table `equipe`
 --
 
 DROP TABLE IF EXISTS `equipe`;
@@ -89,7 +96,7 @@ CREATE TABLE IF NOT EXISTS `equipe` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jeton_vote`
+-- Structure de la table `jeton_vote`
 --
 
 DROP TABLE IF EXISTS `jeton_vote`;
@@ -105,7 +112,7 @@ CREATE TABLE IF NOT EXISTS `jeton_vote` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `scrutin`
+-- Structure de la table `scrutin`
 --
 
 DROP TABLE IF EXISTS `scrutin`;
@@ -123,7 +130,7 @@ CREATE TABLE IF NOT EXISTS `scrutin` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `vote`
+-- Structure de la table `vote`
 --
 
 DROP TABLE IF EXISTS `vote`;
@@ -138,7 +145,7 @@ CREATE TABLE IF NOT EXISTS `vote` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `vote_effectue`
+-- Structure de la table `vote_effectue`
 --
 
 DROP TABLE IF EXISTS `vote_effectue`;
@@ -151,36 +158,36 @@ CREATE TABLE IF NOT EXISTS `vote_effectue` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Constraints for dumped tables
+-- Contraintes pour les tables déchargées
 --
 
 --
--- Constraints for table `classement`
+-- Contraintes pour la table `classement`
 --
 ALTER TABLE `classement`
   ADD CONSTRAINT `fk_classement_equipe` FOREIGN KEY (`id_equipe`) REFERENCES `equipe` (`id_equipe`) ON DELETE CASCADE,
   ADD CONSTRAINT `fk_classement_vote` FOREIGN KEY (`id_vote`) REFERENCES `vote` (`id_vote`) ON DELETE CASCADE;
 
 --
--- Constraints for table `jeton_vote`
+-- Contraintes pour la table `jeton_vote`
 --
 ALTER TABLE `jeton_vote`
   ADD CONSTRAINT `fk_jeton_scrutin` FOREIGN KEY (`id_scrutin`) REFERENCES `scrutin` (`id_scrutin`) ON DELETE CASCADE;
 
 --
--- Constraints for table `scrutin`
+-- Contraintes pour la table `scrutin`
 --
 ALTER TABLE `scrutin`
   ADD CONSTRAINT `fk_scrutin_admin` FOREIGN KEY (`id_admin`) REFERENCES `administrateur` (`id_admin`) ON DELETE CASCADE;
 
 --
--- Constraints for table `vote`
+-- Contraintes pour la table `vote`
 --
 ALTER TABLE `vote`
   ADD CONSTRAINT `fk_vote_jeton` FOREIGN KEY (`id_jeton`) REFERENCES `jeton_vote` (`id_jeton`) ON DELETE CASCADE;
 
 --
--- Constraints for table `vote_effectue`
+-- Contraintes pour la table `vote_effectue`
 --
 ALTER TABLE `vote_effectue`
   ADD CONSTRAINT `fk_vote_effectue_electeur` FOREIGN KEY (`id_electeur`) REFERENCES `electeur` (`id_electeur`) ON DELETE CASCADE,
