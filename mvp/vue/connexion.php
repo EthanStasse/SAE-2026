@@ -10,7 +10,7 @@ $is_connecter = $_SESSION['is_connecter'] ?? false;
 // Si on clique sur "Connexion"
 if (isset($_POST['btn_connexion'])) {
 
-    $nom = $_POST['nom'];
+    $email = $_POST['email'];
     $mdp = $_POST['mdp'];
 
     // Connexion MySQL
@@ -24,9 +24,9 @@ if (isset($_POST['btn_connexion'])) {
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // Vérifie si administrateur
-        $sql = "SELECT * FROM administrateur WHERE nom = ?";
+        $sql = "SELECT * FROM administrateur WHERE email = ?";
         $stmt = $pdo->prepare($sql);
-        $stmt->execute([$nom]);
+        $stmt->execute([$email]);
         $admin = $stmt->fetch();
 
         if ($admin && password_verify($mdp, $admin['mot_de_passe'])) {
@@ -38,9 +38,9 @@ if (isset($_POST['btn_connexion'])) {
         }
 
         // Vérifie si electeur
-        $sql = "SELECT * FROM electeur WHERE nom = ?";
+        $sql = "SELECT * FROM electeur WHERE email = ?";
         $stmt = $pdo->prepare($sql);
-        $stmt->execute([$nom]);
+        $stmt->execute([$email]);
         $user = $stmt->fetch();
 
         if ($user && password_verify($mdp, $user['mot_de_passe'])) {
@@ -90,8 +90,8 @@ if (isset($_POST['btn_connexion'])) {
     <h2>Connectez-vous</h2>
 
 <form method="POST" action="Index.php?page=connexion">
-    <label>Nom</label>
-    <input type="text" name="nom" placeholder="Votre nom">
+    <label>Email</label>
+    <input type="text" name="email" placeholder="Votre email">
 
     <label>Mot de passe</label>
     <input type="password" name="mdp" placeholder="Votre mot de passe">
@@ -104,7 +104,7 @@ if (isset($_POST['btn_connexion'])) {
 </main>
 
 <footer>
-    <p>&copy; 2025 - Coup de Sifflet</p>
+    <p>&copy; 2026 - Coup de Sifflet</p>
 </footer>
 
 </body>

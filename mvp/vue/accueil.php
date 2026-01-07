@@ -12,7 +12,7 @@ $nom = $_SESSION['nom'] ?? '';
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Coup de Sifflet - Accueil</title>
+    <title>Accueil - Coup de Sifflet</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -20,6 +20,9 @@ $nom = $_SESSION['nom'] ?? '';
 <header>
     <h1>Coup de Sifflet</h1>
     <nav>
+        <?php if ($is_admin == true) { ?>
+        <a href="Index.php?page=AdminPanel">Données_Admin</a>
+        <?php }?>
         <a href="Index.php?page=accueil">Accueil</a>
         <a href="Index.php?page=contact">Contact</a>
         <?php if ($is_connecter == true) { ?>
@@ -45,7 +48,7 @@ $nom = $_SESSION['nom'] ?? '';
 </main>
 
 <footer>
-    <p>&copy; 2025 - Coup de Sifflet</p>
+    <p>&copy; 2026 - Coup de Sifflet</p>
 </footer>
 
 </body>

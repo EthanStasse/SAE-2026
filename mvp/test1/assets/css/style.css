@@ -1,0 +1,154 @@
+:root {
+    --blue: #1F5EB3;
+    --yellow: #FFD944;
+    --bg: #ffffff;
+    --font: 'Poppins', sans-serif;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+/* HEADER */
+header {
+    background: var(--blue);
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav a {
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 90px 20px;
+}
+
+.hero h2 {
+    font-size: 32px;
+}
+
+.btn {
+    background: var(--yellow);
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    margin-top: 15px;
+    display: inline-block;
+}
+
+/* FORM */
+.form-section {
+    width: 60%;
+    margin: 40px auto;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+/* FOOTER */
+footer {
+    background: var(--blue);
+    color: white;
+    padding: 15px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+/* CLUBS LIST (2 columns cards) */
+.clubs-grid {
+    width: min(1100px, 92vw);
+    margin: 18px auto 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.club-card {
+    background: var(--bg);
+    border: 1px solid rgba(0,0,0,0.10);
+    border-left: 8px solid var(--yellow);
+    border-radius: 14px;
+    padding: 14px 16px;
+    font-family: var(--font);
+    font-weight: 600;
+    color: #111;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+    transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+}
+
+.club-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+    border-left-color: var(--blue);
+}
+
+/* Smaller screens: 1 column */
+@media (max-width: 650px) {
+    .clubs-grid {
+        grid-template-columns: 1fr;
+    }
+}
+/* Compact hero under navbar */
+.hero-compact {
+    width: min(1100px, 92vw);
+    margin: 16px auto 10px auto;
+    padding: 10px 14px;
+    border-radius: 12px;
+    background: rgba(0,0,0,0.04);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: var(--font);
+}
+
+.hero-left {
+    font-size: 14px;
+    color: #222;
+}
+
+.hero-left strong {
+    color: var(--blue);
+    font-weight: 700;
+}
+
+.hero-left span {
+    margin-left: 6px;
+    opacity: 0.7;
+}
+
+.hero-right {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Mobile: stack nicely */
+@media (max-width: 600px) {
+    .hero-compact {
+        flex-direction: column;
+        gap: 6px;
+        text-align: center;
+    }
+}

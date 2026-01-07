@@ -22,4 +22,12 @@ class PageController {
         include "vue/CreerCompte.php";
     }   
 
+    public function AdminPanel() {
+        include "vue/AdminPanel.php";
+    }
+
+    public function supprimer() {
+        include "vue/supprimer.php";
+    }
+
 }

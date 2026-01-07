@@ -98,7 +98,7 @@ if (isset($_POST['btn_connexion'])) {
 </section>
 </main>
 <footer>
-    <p>&copy; 2025 - Coup de Sifflet</p>
+    <p>&copy; 2026 - Coup de Sifflet</p>
 </footer>
 </body>
 </html>

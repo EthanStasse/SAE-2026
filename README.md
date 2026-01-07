@@ -1,5 +1,5 @@
 # SAE-2026
 
 Code Admin : 
-nom:Admin
+email:Admin@Admin
 MDP:Admin

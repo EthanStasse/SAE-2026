@@ -28,6 +28,14 @@ switch ($page) {
         $controller->CreerCompte();
         break;
 
+    case "AdminPanel":
+        $controller->AdminPanel();
+        break;
+
+    case "supprimer":
+        $controller->supprimer();
+        break;
+
     default:
         echo "Page inconnue";
 }
