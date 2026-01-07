@@ -92,6 +92,12 @@ if (isset($_POST['btn_connexion'])) {
 
         <label>Mot de passe</label>
         <input type="password" name="mdp" placeholder="Votre mot de passe" required>
+        
+        <p>
+        <input type="checkbox" name="accepter_conditions"required>
+        <a href="Index.php?page=conditions_generales">Condition générale</a>
+        </p>
+           
 
         <button type="submit" name="btn_connexion" class="btn">Creer un compte</button>
     </form>
